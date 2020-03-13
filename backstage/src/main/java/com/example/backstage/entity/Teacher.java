@@ -12,18 +12,22 @@ import java.util.List;
 @NoArgsConstructor
 public class Teacher {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(length = 10)
     private int id;
-    @Column(unique = true ,length = 8)
-    private int teacher_number;
-
-    private String key = "123456";
+    @Column(length = 16)
+    private String password = "123456";
     private String name;
     private String extra;
 
     //学生上限
     private int upper_limit;
 
-    @OneToMany(mappedBy = "teacher")
+    @OneToMany(mappedBy = "teacher",fetch = FetchType.LAZY)
     private List<Student> studentList;
+
+    @OneToMany(mappedBy = "teacher",fetch = FetchType.LAZY)
+    private List<Course> courseList;
+
+    @OneToMany(mappedBy = "teacher",fetch = FetchType.LAZY)
+    private List<Direction> directionList;
 }

@@ -11,15 +11,15 @@ import java.util.List;
 @NoArgsConstructor
 public class Student {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(length = 10)
     private int id;
-    @Column(unique = true,length = 8)
-    private int student_number;
-    private String key="123456";
+    @Column(length = 16)
+    private String password ="123456";
     private String name;
     private String extra;
     private Float grade;
 
+    private Boolean isSelected;
     @OneToMany(mappedBy = "student")
     private List<Elective> electiveList;
 

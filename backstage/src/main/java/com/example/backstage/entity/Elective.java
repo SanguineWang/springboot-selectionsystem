@@ -13,7 +13,6 @@ public class Elective {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String extra;
-
     private float grade;
 
     @ManyToOne

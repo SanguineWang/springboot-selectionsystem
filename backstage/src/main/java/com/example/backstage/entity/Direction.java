@@ -4,24 +4,17 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
-@Entity
 @Data
+@Entity
 @NoArgsConstructor
-public class Course {
+public class Direction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
     private String name;
-    private String extra;
     private float weight;
-    private float lowest;
-
-    @OneToMany( mappedBy = "course")
-    private List<Elective> electiveList;
-
     @ManyToOne
     private Teacher teacher;
+
 }
