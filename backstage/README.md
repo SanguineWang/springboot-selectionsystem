@@ -94,3 +94,12 @@ Error executing DDL "create table student (id integer not null, extra varchar(25
             List<Direction> directionList;
            }
 ```
+## 2020/3/14
+* BUG 
+```java
+//实体类使用@Data注解来自动生成getset方法与toString方法
+//实体类使用JPA方法来实现实体类之间的对应关系 一对一/一对多/多对多
+//因为实体类对应关系,之间有一个双向引用（我们看不到哪个字段，因为您省略了该字段，或者粘贴的代码错误）。这两个类中生成的toString（）方法都无休止地相互调用。
+ @ToString.Exclude
+//在属性many端进行声明
+```

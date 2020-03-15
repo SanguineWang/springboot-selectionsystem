@@ -22,7 +22,6 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ElectiveReporsitoryTest {
     @Autowired
     private ElectiveReporsitory electiveReporsitory;
-    private EntityManager manager;
     @Autowired
     private CourseRepository courseRepository;
     @Autowired
@@ -37,7 +36,7 @@ public class ElectiveReporsitoryTest {
 
     @Test
     public void test_addelective() {
-        Course course =  courseRepository.getOne(1);
+        Course course =  courseRepository.getOne(2);
         Student student = studentRepository.getOne(2017214001);
         Elective elective = new Elective();
         elective.setCourse(course);

@@ -1,7 +1,9 @@
 package com.example.backstage.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 
@@ -16,7 +18,11 @@ public class Elective {
     private float grade;
 
     @ManyToOne
+    @ToString.Exclude
+    @JsonIgnore
     private Course course;
     @ManyToOne
+    @ToString.Exclude
+    @JsonIgnore
     private Student student;
 }

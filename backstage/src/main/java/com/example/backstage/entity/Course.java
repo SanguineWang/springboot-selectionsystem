@@ -2,6 +2,7 @@ package com.example.backstage.entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.List;
@@ -18,7 +19,7 @@ public class Course {
     private String extra;
     private float weight;
     private float lowest;
-
+    @ToString.Exclude
     @OneToMany( mappedBy = "course")
     private List<Elective> electiveList;
 

@@ -13,7 +13,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Slf4j
-@Transactional
 public class TeacherRepositoryTest {
     @Autowired
     private TeacherService teacherService;
@@ -29,7 +28,6 @@ public class TeacherRepositoryTest {
             teacher1.setUpper_limit(10);
             teacherService.updateTeacher(teacher1);
         } else {
-
             teacher.setName("wangziyang");
             teacher.setUpper_limit(10);
             teacherService.updateTeacher(teacher);

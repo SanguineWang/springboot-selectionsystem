@@ -1,7 +1,9 @@
 package com.example.backstage.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.List;
@@ -18,9 +20,10 @@ public class Student {
     private String name;
     private String extra;
     private Float grade;
-
     private Boolean isSelected;
-    @OneToMany(mappedBy = "student")
+
+//    @ToString.Exclude
+    @OneToMany(mappedBy = "student",fetch = FetchType.EAGER,cascade = CascadeType.REMOVE)
     private List<Elective> electiveList;
 
     @ManyToOne
