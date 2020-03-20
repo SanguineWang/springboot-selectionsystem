@@ -65,9 +65,8 @@
             Student student;
             }
 ```
-
 * BUG 
-```java
+```log
 //实体创建 String key属性时报错，可能与底层实现sql语句冲突
 Error executing DDL "create table student (id integer not null, extra varchar(255), grade float, is_selected bit, key varchar(255), name varchar(255), teacher_id integer, primary key (id)) engine=InnoDB" via JDBC Statement
 ```
@@ -94,3 +93,20 @@ Error executing DDL "create table student (id integer not null, extra varchar(25
             List<Direction> directionList;
            }
 ```
+### 2020/3/21 0:01
+* improvenments 
+```text
+改进表属性为引用类型
+```
+* New Features 新功能
+```text
+业务逻辑层分角色开发
+teacher：修改密码
+         修改其他信息
+         添加/修改毕设方向
+         创建、修改课程
+         指定课程添加/修改学生和成绩
+         添加指定学生
+         登录  
+student：登录     
+```   

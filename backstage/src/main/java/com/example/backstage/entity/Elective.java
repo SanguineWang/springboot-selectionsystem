@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
@@ -15,8 +16,9 @@ public class Elective {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String extra;
-    private float grade;
-
+    private Float grade;
+    @Column(columnDefinition = "timestamp default current_timestamp", insertable = false, updatable = false)
+    private LocalDate insertTime;
     @ManyToOne
     @ToString.Exclude
     @JsonIgnore

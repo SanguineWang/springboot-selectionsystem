@@ -6,4 +6,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ElectiveReporsitory extends BaseReporsitory<Elective,Integer> {
 
+    void deleteAllByCourseId(int id);
+
+
 }

@@ -36,12 +36,25 @@ public class ElectiveReporsitoryTest {
 
     @Test
     public void test_addelective() {
-        Course course =  courseRepository.getOne(2);
+        Course course =  courseRepository.getOne(1);
+        Course course2 =  courseRepository.getOne(2);
+        Course course3 =  courseRepository.getOne(3);
         Student student = studentRepository.getOne(2017214001);
         Elective elective = new Elective();
         elective.setCourse(course);
         elective.setStudent(student);
         electiveReporsitory.save(elective);
+
+        Elective elective2 = new Elective();
+        elective2.setCourse(course2);
+        elective2.setStudent(student);
+        electiveReporsitory.save(elective2);
+
+        Elective elective3 = new Elective();
+        elective3.setCourse(course3);
+        elective3.setStudent(student);
+        electiveReporsitory.save(elective3);
+
     }
 
 }

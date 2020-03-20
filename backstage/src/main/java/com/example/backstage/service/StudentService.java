@@ -16,15 +16,28 @@ public class StudentService {
     @Autowired
     private StudentRepository studentRepository;
 
-    public Student getStudent(int id) {
-        return studentRepository.findById(id).orElse(null);
-    }
 
-    public void addStudent(Student student) {
-        studentRepository.save(student);
-    }
 
     public List<Student> getAllStudent(){
         return  studentRepository.findAll();
+    }
+
+    /**
+     * 登录
+     * @param id
+     * @param password
+     * @return
+     */
+    public Boolean login(Integer id,String password){
+        Student student= studentRepository.findById(id).orElse(null);
+        if (student!=null)
+        {
+            if (student.getPassword().equals(password))
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

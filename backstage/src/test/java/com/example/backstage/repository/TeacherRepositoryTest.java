@@ -17,26 +17,10 @@ public class TeacherRepositoryTest {
     @Autowired
     private TeacherService teacherService;
 
-    @Test
-    public void test_update() {
-        Teacher teacher = teacherService.getTeacher(2017000001);
-        if (teacher == null) {
-            log.debug("没找到该teacher");
-            Teacher teacher1=new Teacher();
-            teacher1.setId(2017000001);
-            teacher1.setName("wang");
-            teacher1.setUpper_limit(10);
-            teacherService.updateTeacher(teacher1);
-        } else {
-            teacher.setName("wangziyang");
-            teacher.setUpper_limit(10);
-            teacherService.updateTeacher(teacher);
-        }
-    }
 
-    @Test
-    public void test_fetch() {
-        Teacher teacher = teacherService.getTeacher(2017000001);
-        log.debug(teacher.getStudentList().toString());
-    }
+//    @Test
+//    public void test_fetch() {
+//        Teacher teacher = teacherService.getTeacher(2017000001);
+//        log.debug(teacher.getStudentList().toString());
+//    }
 }
