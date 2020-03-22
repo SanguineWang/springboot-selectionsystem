@@ -8,23 +8,25 @@ import lombok.ToString;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.UUID;
 
 @Data
 @Entity
 @NoArgsConstructor
 public class Student {
     @Id
-    @Column(length = 10)
-    private int id;
+    @GeneratedValue
+    @Column(length = 16)
+    private UUID uuid;
 
+    @Column(length = 10,unique = true)
+    private Integer id;
     @Column(length = 16)
     private String password ="123456";
     private String name;
     private String extra;
     private Float grade;
     private Boolean isSelected;
-
-
     @Column(columnDefinition = "timestamp default current_timestamp", insertable = false, updatable = false)
     private LocalDate insertTime;
 //    @ToString.Exclude

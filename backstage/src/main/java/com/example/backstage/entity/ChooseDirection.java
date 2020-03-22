@@ -7,14 +7,16 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Data
 @Entity
 @NoArgsConstructor
 public class ChooseDirection {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @GeneratedValue
+    @Column(length = 16)
+    private UUID uuid;
 
     @Column(columnDefinition = "timestamp default current_timestamp", insertable = false, updatable = false)
     private LocalDate insertTime;

@@ -36,10 +36,10 @@ public class ElectiveReporsitoryTest {
 
     @Test
     public void test_addelective() {
-        Course course =  courseRepository.getOne(1);
-        Course course2 =  courseRepository.getOne(2);
-        Course course3 =  courseRepository.getOne(3);
-        Student student = studentRepository.getOne(2017214001);
+        Course course =  courseRepository.find(1);
+        Course course2 =  courseRepository.find(2);
+        Course course3 =  courseRepository.find(3);
+        Student student = studentRepository.find(2017214001);
         Elective elective = new Elective();
         elective.setCourse(course);
         elective.setStudent(student);

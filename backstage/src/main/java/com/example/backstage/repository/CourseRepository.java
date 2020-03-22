@@ -5,8 +5,16 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.UUID;
+
 @Repository
-public interface CourseRepository extends BaseReporsitory<Course , Integer> {
-    @Query("from Course c where c.id=:cid and c.teacher.id=:tid")
-    Course find(@Param("cid")Integer cid,@Param("tid")Integer tid);
+public interface CourseRepository extends BaseReporsitory<Course , UUID> {
+    /**
+     * 根据课程id 查询课程
+     * @param cid
+     * @return
+     */
+
+    @Query("from Course c where c.id=:cid")
+    Course find(@Param("cid")Integer cid);
 }

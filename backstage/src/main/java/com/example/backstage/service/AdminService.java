@@ -1,5 +1,6 @@
 package com.example.backstage.service;
 
+import com.example.backstage.annotation.MyAuthority;
 import com.example.backstage.entity.Teacher;
 import com.example.backstage.repository.TeacherRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -11,6 +12,7 @@ import java.util.List;
 
 @Service
 @Transactional
+@MyAuthority(value = MyAuthority.MyAuthorityType.ADMIN)
 public class AdminService {
     @Autowired
     private TeacherRepository teacherRepository;
@@ -31,7 +33,7 @@ public class AdminService {
 
 
     public Teacher getTeacher(int id) {
-        return teacherRepository.findById(id).orElse(null);
+        return teacherRepository.find(id);
     }
 
     public List<Teacher> getAllTeacher() {

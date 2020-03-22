@@ -17,7 +17,7 @@ public class JPQLTest {
 
    @Test
     public void allStudent(){
-        log.debug("{}",studentRepository.findAllStudent());
+        log.debug("{}",studentRepository.findAll());
     }
 
     @Test

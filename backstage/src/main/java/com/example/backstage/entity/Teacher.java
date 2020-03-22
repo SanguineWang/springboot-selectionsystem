@@ -7,14 +7,19 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.UUID;
 
 @Data
 @Entity
 @NoArgsConstructor
 public class Teacher {
     @Id
-    @Column(length = 10)
-    private int id;
+    @GeneratedValue
+    @Column(length = 16)
+    private UUID uuid;
+
+    @Column(length = 10,unique = true)
+    private Integer id;
     @Column(length = 16)
     private String password = "123456";
     private String name;

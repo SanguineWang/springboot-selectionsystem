@@ -1,5 +1,6 @@
 package com.example.backstage.service;
 
+import com.example.backstage.annotation.MyAuthority;
 import com.example.backstage.entity.Student;
 import com.example.backstage.repository.StudentRepository;
 import com.example.backstage.repository.TeacherRepository;
@@ -11,6 +12,7 @@ import java.util.List;
 
 @Service
 @Transactional
+@MyAuthority(value = MyAuthority.MyAuthorityType.STUDENT)
 public class StudentService {
 
     @Autowired
@@ -24,12 +26,12 @@ public class StudentService {
 
     /**
      * 登录
-     * @param id
+     * @param sid
      * @param password
      * @return
      */
-    public Boolean login(Integer id,String password){
-        Student student= studentRepository.findById(id).orElse(null);
+    public Boolean login(Integer sid,String password){
+        Student student= studentRepository.find(sid);
         if (student!=null)
         {
             if (student.getPassword().equals(password))

@@ -7,15 +7,22 @@ import lombok.ToString;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Data
 @NoArgsConstructor
 public class Course {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
 
+    @Id
+    @GeneratedValue
+    @Column(length = 16)
+    private UUID uuid;
+
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @Column(unique = true)
     private String name;
     private String extra;
     private Float weight;

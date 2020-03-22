@@ -7,14 +7,17 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Data
 @NoArgsConstructor
 @Entity
 public class Elective {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @GeneratedValue
+    @Column(length = 16)
+    private UUID uuid;
+
     private String extra;
     private Float grade;
     @Column(columnDefinition = "timestamp default current_timestamp", insertable = false, updatable = false)
