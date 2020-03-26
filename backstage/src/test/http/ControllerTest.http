@@ -1,0 +1,33 @@
+PATCH http://localhost:8081/teacher/2017000001/course/10
+Content-Type: application/json
+
+{
+
+  "name" : "abc",
+  "weight": "2.2"
+}
+
+###
+POST http://localhost:8081/teacher/2017000001/course
+Content-Type: application/json
+
+{
+  "name" : "aaa",
+  "weight": "2.0"
+
+}
+
+
+###
+GET http://localhost:8081/teacher/2017000001/course
+Accept: application/json
+
+###
+GET http://localhost:8081/teacher/2017000001/main
+Accept: application/json
+
+###
+GET http://localhost:8081/students/allStudent
+Accept: application/json
+
+###

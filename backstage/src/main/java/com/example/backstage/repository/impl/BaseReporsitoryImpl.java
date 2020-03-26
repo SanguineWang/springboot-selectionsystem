@@ -17,4 +17,6 @@ public class BaseReporsitoryImpl<T, ID> extends SimpleJpaRepository<T, ID>  impl
     public void refresh(T t) {
       manager.refresh(t);
     }
+
+
 }

@@ -25,8 +25,8 @@ public interface StudentRepository extends BaseReporsitory<Student, UUID> {
     List<Student> FromCourseGetStudent(@Param("id") int id);
 
     //查询指定成绩范围limit , 指定老师id的学生,按照加权成绩倒序
-    @Query("select s from Student s where s.grade>=:limit and s.teacher.id=:tid order by s.grade desc ")
-    List<Student> find(@Param("limit")Float limit,@Param("tid")Integer tid);
+    @Query("select s from Student s where s.grade>=:limit  order by s.grade desc ")
+    List<Student> find(@Param("limit")Float limit);
 
     /**
      * 指定学生id获取学生

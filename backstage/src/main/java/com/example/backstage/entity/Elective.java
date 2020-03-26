@@ -22,6 +22,7 @@ public class Elective {
     private Float grade;
     @Column(columnDefinition = "timestamp default current_timestamp", insertable = false, updatable = false)
     private LocalDate insertTime;
+
     @ManyToOne
     @ToString.Exclude
     @JsonIgnore

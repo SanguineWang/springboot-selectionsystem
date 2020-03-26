@@ -1,5 +1,6 @@
 package com.example.backstage.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -14,11 +15,11 @@ import java.util.UUID;
 @NoArgsConstructor
 public class Course {
 
+    //    @Id
+//    @GeneratedValue
+//    @Column(length = 16)
+//    private UUID uuid;
     @Id
-    @GeneratedValue
-    @Column(length = 16)
-    private UUID uuid;
-
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
@@ -32,9 +33,12 @@ public class Course {
     private LocalDate insertTime;
 
     @ToString.Exclude
-    @OneToMany( mappedBy = "course")
+    @JsonIgnore
+    @OneToMany(mappedBy = "course")
     private List<Elective> electiveList;
 
     @ManyToOne
+    @JsonIgnore
+    @ToString.Exclude
     private Teacher teacher;
 }

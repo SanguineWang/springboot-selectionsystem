@@ -1,6 +1,7 @@
 package com.example.backstage.entity;
 
 import ch.qos.logback.classic.turbo.TurboFilter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -21,6 +22,7 @@ public class Teacher {
     @Column(length = 10,unique = true)
     private Integer id;
     @Column(length = 16)
+    @JsonIgnore
     private String password = "123456";
     private String name;
     private String extra;
@@ -31,12 +33,13 @@ public class Teacher {
     //学生上限
     private Boolean isAdmin;//是否管理员
 
+    @JsonIgnore
     @OneToMany(mappedBy = "teacher",fetch = FetchType.LAZY)
     private List<Student> studentList;
-
+    @JsonIgnore
     @OneToMany(mappedBy = "teacher",fetch = FetchType.LAZY)
     private List<Course> courseList;
-
+    @JsonIgnore
     @OneToMany(mappedBy = "teacher",fetch = FetchType.LAZY)
     private List<Direction> directionList;
 }

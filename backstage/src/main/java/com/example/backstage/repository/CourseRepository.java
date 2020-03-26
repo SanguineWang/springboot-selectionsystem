@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.UUID;
 
 @Repository
-public interface CourseRepository extends BaseReporsitory<Course , UUID> {
+public interface CourseRepository extends BaseReporsitory<Course , Integer> {
     /**
      * 根据课程id 查询课程
      * @param cid

@@ -61,34 +61,33 @@ public class RepositoryTest {
         studentRepository.save(student5);
 
 
-
         Course course1 = new Course();
         course1.setName("Java程序设计");
-        course1.setWeight( Float.valueOf("2.5"));
+        course1.setWeight(Float.valueOf("2.5"));
         course1.setTeacher(teacher1);
         courseRepository.save(course1);
 
         Course course2 = new Course();
         course2.setName("Web开发技术");
-        course2.setWeight( Float.valueOf("2.5"));
+        course2.setWeight(Float.valueOf("2.5"));
         course2.setTeacher(teacher1);
         courseRepository.save(course2);
 
         Course course3 = new Course();
         course3.setName("Web系统框架");
-        course3.setWeight( Float.valueOf("2.5"));
+        course3.setWeight(Float.valueOf("2.5"));
         course3.setTeacher(teacher1);
         courseRepository.save(course3);
 
         Course course4 = new Course();
         course4.setName("移动终端设计");
-        course4.setWeight( Float.valueOf("2.5"));
+        course4.setWeight(Float.valueOf("2.5"));
         course4.setTeacher(teacher1);
         courseRepository.save(course4);
 
         Course course5 = new Course();
         course5.setName("Linux-docker学习小组");
-        course5.setWeight( Float.valueOf("5"));
+        course5.setWeight(Float.valueOf("5"));
         course5.setTeacher(teacher1);
         courseRepository.save(course5);
 
@@ -116,11 +115,12 @@ public class RepositoryTest {
 
     @Test
     public void test_remove() {
-        electiveReporsitory.remove(2, 2017000001);
+        electiveReporsitory.remove(2);
     }
 
     @Test
     public void test_find() {
-        studentRepository.findAll();
+        log.debug("{}",studentRepository.find(2017214000));
+
     }
 }

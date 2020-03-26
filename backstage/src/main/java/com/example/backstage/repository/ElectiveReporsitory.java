@@ -18,8 +18,8 @@ public interface ElectiveReporsitory extends BaseReporsitory<Elective, UUID> {
      */
     @Modifying
     @Transactional
-    @Query("delete from Elective e where e.course.id =:cid and e.course.teacher.id=:tid")
-    void remove(@Param("cid") Integer cid,@Param("tid")Integer tid);
+    @Query("delete from Elective e where e.course.id =:cid")
+    void remove(@Param("cid") Integer cid);
 
 
 }

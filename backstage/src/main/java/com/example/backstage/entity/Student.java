@@ -22,6 +22,7 @@ public class Student {
     @Column(length = 10,unique = true)
     private Integer id;
     @Column(length = 16)
+    @JsonIgnore
     private String password ="123456";
     private String name;
     private String extra;
@@ -29,11 +30,18 @@ public class Student {
     private Boolean isSelected;
     @Column(columnDefinition = "timestamp default current_timestamp", insertable = false, updatable = false)
     private LocalDate insertTime;
-//    @ToString.Exclude
+
+    @ToString.Exclude
+    @JsonIgnore
     @OneToMany(mappedBy = "student",fetch = FetchType.LAZY,cascade = CascadeType.REMOVE)
     private List<Elective> electiveList;
+    @ToString.Exclude
+    @JsonIgnore
     @OneToMany(mappedBy = "student",fetch = FetchType.LAZY,cascade = CascadeType.REMOVE)
     private List<ChooseDirection> chooseDirections;
+
+    @ToString.Exclude
+    @JsonIgnore
     @ManyToOne
     private Teacher teacher;
 

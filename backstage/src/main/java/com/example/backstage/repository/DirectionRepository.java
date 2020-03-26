@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.UUID;
 
 @Repository
-public interface DirectionRepository extends BaseReporsitory<Direction, UUID> {
+public interface DirectionRepository extends BaseReporsitory<Direction, Integer> {
     /**
      * 根据方向id 查方向
      * @param directionid

@@ -94,8 +94,8 @@ Error executing DDL "create table student (id integer not null, extra varchar(25
            }
 ```
 ### 2020/3/21 0:01
-* improvenments 
-```text
+* Improvenments 
+```textI
 改进表属性为引用类型
 ```
 * New Features 新功能
@@ -110,3 +110,6 @@ teacher：修改密码
          登录  
 student：登录     
 ```   
+### 2020/3/26 10:11
+* Improvenments 
+改进业务逻辑层功能

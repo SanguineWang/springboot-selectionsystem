@@ -1,5 +1,6 @@
 package com.example.backstage.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -14,11 +15,11 @@ import java.util.UUID;
 @NoArgsConstructor
 public class Direction {
 
+    //    @Id
+//    @GeneratedValue
+//    @Column(length = 16)
+//    private UUID uuid;
     @Id
-    @GeneratedValue
-    @Column(length = 16)
-    private UUID uuid;
-
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
@@ -32,7 +33,8 @@ public class Direction {
     private Teacher teacher;
 
     @ToString.Exclude
-    @OneToMany( mappedBy = "direction")
+    @JsonIgnore
+    @OneToMany(mappedBy = "direction")
     private List<ChooseDirection> chooseDirections;
 
 
