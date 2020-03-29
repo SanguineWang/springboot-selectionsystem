@@ -94,8 +94,7 @@ public class TeacherService {
         }
     }
     /**
-     * 为老师添加指定学生
-     * 添加已提前敲定的学生，直接占用导师名额
+     * 为老师添加指定学生，添加已提前敲定的学生，直接占用导师名额
      *
      * @param tid
      * @param sid
@@ -106,9 +105,8 @@ public class TeacherService {
         Teacher teacher = teacherRepository.find(tid);
         if (student != null && teacher != null) {
             int count = teacher.getUpper_limit() - teacher.getStudentList().size();
-            if (count >= 0)
+            if (count >0)
                 student.setTeacher(teacher);
-
         }
     }
     /**
@@ -212,8 +210,7 @@ public class TeacherService {
     }
 
     /**
-     * 返回当前教师指定成绩范围的
-     * 有资格的学生集合，按照加权成绩排序
+     * 返回当前教师指定成绩范围的有资格的学生集合，按照加权成绩排序,存入redis缓存
      *
      * @param tid
      * @param weight

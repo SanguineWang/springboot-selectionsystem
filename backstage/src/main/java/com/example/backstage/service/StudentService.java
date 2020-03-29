@@ -64,9 +64,7 @@ public class StudentService {
     public void pick(Integer sid, Integer tid) {
         Student student = studentRepository.find(sid);
         Teacher teacher = teacherRepository.find(tid);
-
         int rest = teacher.getUpper_limit() - teacher.getStudentList().size();
-
         if (rest > 0) {
             student.setTeacher(teacher);
         }
