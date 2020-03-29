@@ -98,18 +98,31 @@ Error executing DDL "create table student (id integer not null, extra varchar(25
 ```textI
 改进表属性为引用类型
 ```
-* New Features 新功能
+* New Features
 ```text
 业务逻辑层分角色开发
-teacher：修改密码
-         修改其他信息
-         添加/修改毕设方向
-         创建、修改课程
-         指定课程添加/修改学生和成绩
-         添加指定学生
-         登录  
-student：登录     
+TeacherService：
+            修改密码
+            修改其他信息
+            添加/修改毕设方向
+            创建、修改课程
+            指定课程添加/修改学生和成绩
+            添加指定学生
+            启动双选
+            登录  
+StudentService：
+            登录     
 ```   
 ### 2020/3/26 10:11
 * Improvenments 
-改进业务逻辑层功能
+```text
+改进业务逻辑层功能，参数优化
+```
+### 2020/3/29 16:06
+* New Features 
+```text
+StudentService: 
+            登录
+            判断是否选过
+            选择导师
+```

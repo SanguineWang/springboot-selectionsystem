@@ -104,17 +104,13 @@ public class TeacherService {
     public void add(int tid, int sid) {
         Student student = studentRepository.find(sid);
         Teacher teacher = teacherRepository.find(tid);
-
         if (student != null && teacher != null) {
-
             int count = teacher.getUpper_limit() - teacher.getStudentList().size();
             if (count >= 0)
                 student.setTeacher(teacher);
 
         }
     }
-
-
     /**
      * 添加方向
      *

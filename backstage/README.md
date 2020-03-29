@@ -103,3 +103,8 @@ Error executing DDL "create table student (id integer not null, extra varchar(25
  @ToString.Exclude
 //在属性many端进行声明
 ```
+## 2020/3/29
+* To be completed
+```text
+类似秒杀选人的设计
+```
