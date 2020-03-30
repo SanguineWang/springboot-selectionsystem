@@ -1,9 +1,9 @@
 ## SelectionSystem Backstage :couple:
 
 ### Development :oncoming_police_car:	
-![Language](https://img.shields.io/badge/Java-11-yellow)
-![Idea](https://img.shields.io/badge/Idea-2019.3-blue)
-![MySql WorkBench](https://img.shields.io/badge/MySqlWorkBench-8.0CE-green)
+![Language](https://img.shields.io/badge/Java-11-yellow.svg)
+![Idea](https://img.shields.io/badge/Idea-2019.3-blue.svg)
+![MySql WorkBench](https://img.shields.io/badge/MySqlWorkBench-8.0CE-green.svg)
 ![VS Code](https://img.shields.io/badge/VSCode-1.43.0-pink.svg)
 ![CopyRight©](https://img.shields.io/badge/CopyrRight©2020-SanguineWang-success.svg)
 * Maven
