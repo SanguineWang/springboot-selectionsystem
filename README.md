@@ -1,8 +1,7 @@
 ## SelectionSystem Backstage
 
-### 毕业设计双向选择系统 
+### Development
 
-###
 * Development tool
     * idea 2020
 * DB
@@ -16,8 +15,8 @@
 * Version
     * version1.0
 
+### Deployment environment
 
-### 部署环境(未部署)
 * 服务器硬件配置
 * 系统版本
     * linux
@@ -25,8 +24,8 @@
     * docker
 
 ### Change Log
-#### V0.1.2 (2020/3/29 16:06) :flush:
- :bowtie:
+#### V0.1.2 (2020/3/29 16:06) :dizzy_face:
+
 * New Features 
     * StudentService: 
          * 判断是否选过
@@ -37,7 +36,6 @@
 * Improvenments 
     * 改进业务逻辑层功能，参数优化
     
-
 #### V0.1.0 (2020/3/21 0:01)
 
 * Improvenments 
