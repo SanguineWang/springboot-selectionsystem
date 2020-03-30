@@ -31,8 +31,10 @@
 
 * New Features 
     * StudentService: 
-         * 判断是否选过
-         * 选择导师
+        * 判断是否选过
+        * 选择导师
+    * TeacherController:
+        * 添加，获取，修改课程
 
 #### V0.1.1 (2020/3/26 10:11)  :flushed:
 
