@@ -1,6 +1,6 @@
-## SelectionSystem Backstage
+## SelectionSystem Backstage :couple:
 
-### Development
+### Development :oncoming_police_car:	
 
 * Development tool
     * idea 2020
@@ -15,15 +15,16 @@
 * Version
     * version1.0
 
-### Deployment environment
+### Deployment environment :european_castle:
 
-* 服务器硬件配置
-* 系统版本
-    * linux
-* 依赖的软件配置
-    * docker
+* Server
+* System
+    * Linux  
+* Software
+    * Docker :penguin:
 
-### Change Log
+### Change Log :bookmark_tabs:
+
 #### V0.1.2 (2020/3/29 16:06) :dizzy_face:
 
 * New Features 
@@ -31,12 +32,11 @@
          * 判断是否选过
          * 选择导师
 
-#### V0.1.1 (2020/3/26 10:11)
-
+#### V0.1.1 (2020/3/26 10:11) :flushed:
 * Improvenments 
     * 改进业务逻辑层功能，参数优化
     
-#### V0.1.0 (2020/3/21 0:01)
+#### V0.1.0 (2020/3/21 0:01) :smile:
 
 * Improvenments 
     * 改进表属性为引用类型
@@ -53,14 +53,14 @@
     * StudentService：
         * 登录     
         
-#### V0.0.2 (2020/3/13 11:20)
+#### V0.0.2 (2020/3/13 11:20) :smirk:
 
 * Improvements
     * 添加方向类，与教师类为many to one 关系
             
-#### V0.0.1 (2020/3/10 0:00)
+#### V0.0.1 (2020/3/10 0:00) :blush:
 * Init
-    * 设计实体类关系，建立 : 学生，课程，选课表，教师，方向，选方向中间表
+    * 设计实体类关系，建立 : 学生，课程，选课表，教师
 * Bug 
     * 实体创建 String key属性时报错，可能与底层实现sql语句冲突
 ```text
