@@ -1,12 +1,11 @@
 ## SelectionSystem Backstage :couple:
 
 ### Development :oncoming_police_car:	
-![language](https://img.shields.io/badge/Java-11-yellow)
-![copyRight](https://img.shields.io/badge/CopyrRight-SanguineWang-success)
-* Development tool
-    * ![idea](https://img.shields.io/badge/Idea-2019.3-blue)
-* DB
-    * ![MySql WorkBench](https://img.shields.io/badge/MySqlWorkBench-8.0CE-green)
+![Language](https://img.shields.io/badge/Java-11-yellow)
+![Idea](https://img.shields.io/badge/Idea-2019.3-blue)
+![MySql WorkBench](https://img.shields.io/badge/MySqlWorkBench-8.0CE-green)
+![VS Code](https://img.shields.io/badge/VSCode-1.43.0-pink)
+![CopyRight©](https://img.shields.io/badge/CopyrRight©2020-SanguineWang-success)
 * Maven
     * spring-data-jpa
     * test
