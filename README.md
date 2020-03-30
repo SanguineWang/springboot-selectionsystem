@@ -25,19 +25,21 @@
 
 ### :bookmark_tabs: Change Log 
 
-#### :dizzy_face: V0.1.2 (2020/3/29 16:06) 
+#### V0.1.2 (2020/3/29 16:06) 
+:dizzy_face: 
 
 * New Features 
     * StudentService: 
          * 判断是否选过
          * 选择导师
 
-#### :flushed: V0.1.1 (2020/3/26 10:11) 
+#### V0.1.1 (2020/3/26 10:11) 
+ :flushed:
 * Improvenments 
     * 改进业务逻辑层功能，参数优化
     
-#### :smile: V0.1.0 (2020/3/21 0:01) 
-
+#### V0.1.0 (2020/3/21 0:01) 
+:smile: 
 * Improvenments 
     * 改进表属性为引用类型
 * New Features
@@ -53,12 +55,13 @@
     * StudentService：
         * 登录     
         
-#### :smirk: V0.0.2 (2020/3/13 11:20) 
-
+#### V0.0.2 (2020/3/13 11:20) 
+:smirk: 
 * Improvements
     * 添加方向类，与教师类为many to one 关系
             
-#### :blush: V0.0.1 (2020/3/10 0:00) 
+#### V0.0.1 (2020/3/10 0:00) 
+:blush:
 * Init
     * 设计实体类关系，建立 : 学生，课程，选课表，教师
 * Bug 
