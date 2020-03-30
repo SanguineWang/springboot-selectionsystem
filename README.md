@@ -6,6 +6,7 @@
 ![MySql WorkBench](https://img.shields.io/badge/MySqlWorkBench-8.0CE-green.svg)
 ![VS Code](https://img.shields.io/badge/VSCode-1.43.0-pink.svg)
 ![CopyRight©](https://img.shields.io/badge/CopyrRight©2020-SanguineWang-success.svg)
+
 * Maven
     * spring-data-jpa
     * test
@@ -59,11 +60,14 @@
 
 * Improvements
     * 添加方向类，与教师类为many to one 关系
-            
+    * 跨域配置
+    * 结合Vue前端服务器进行基础的数据展示 
+    * 设计前台界面           
 #### V0.0.1 (2020/3/10 0:00) :blush:
 
 * Init
     * 设计实体类关系，建立 : 学生，课程，选课表，教师
+    * 创建Vue项目(https://github.com/SanguineWang/Vue)
 * Bug 
     * 实体创建 String key属性时报错，可能与底层实现sql语句冲突
 ```text
