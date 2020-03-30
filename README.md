@@ -3,7 +3,7 @@
 ### Development :oncoming_police_car:	
 
 * Development tool
-![idea]{https://img.shields.io/badge/ldea-2019.3-blue.svg}
+    ![idea]{https://img.shields.io/badge/ldea-2019.3-blue.svg}
 * DB
     * MySql WorkBench 8.0 CE
 * Maven
