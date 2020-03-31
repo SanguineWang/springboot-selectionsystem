@@ -29,7 +29,7 @@ public class TeacherController {
     }
 
     @PostMapping("course")
-    public Map addCourse(@PathVariable Integer tid, @Validated @RequestBody Course course) {
+    public Map addCourse(@PathVariable Integer tid,  @RequestBody Course course) {
         log.debug("{}{}", course.getName(), course.getWeight());
         teacherService.add(tid, course);
         return Map.of("courses", teacherService.getCourseList(tid));

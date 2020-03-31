@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.UUID;
 
 @Repository
@@ -16,4 +17,11 @@ public interface DirectionRepository extends BaseReporsitory<Direction, Integer>
      */
     @Query("select d from Direction d where  d.id=:directionid")
     Direction find(@Param("directionid") Integer directionid);
+
+    /**
+     * @param tid 教师工号
+     * @return 方向集合
+     */
+    @Query("from Direction  d where d.teacher.id=:tid")
+    List<Direction> findByTeacherId(@Param("tid")Integer tid);
 }

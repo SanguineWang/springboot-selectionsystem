@@ -104,7 +104,7 @@ public class TeacherServiceTest {
      */
     @Test
     void testAdd2() {
-        teacherService.add(2017000001, 2017214001);
+        teacherService.add(2017000001, 2017214001, "wang");
     }
 
     /**
@@ -126,7 +126,7 @@ public class TeacherServiceTest {
      */
     @Test
     void get() {
-       teacherService.get(2017000001,Float.valueOf("200")).forEach(s->log.debug("{} {}",s.getGrade(),s.getName()));
+        teacherService.get(2017000001, Float.valueOf("200")).forEach(s -> log.debug("{} {} \n{}", s.getGrade(), s.getName(), s));
     }
 
     /**
@@ -137,4 +137,24 @@ public class TeacherServiceTest {
     void start() {
         teacherService.start(2017000001);
     }
+
+    @Test
+    public void test_get() {
+        log.debug("{}", teacherService.getStudentList(2017000001));
+        log.debug("{}", teacherService.getStudentList(2017000000));
+    }
+
+    @Test
+    public void test_get2() {
+        teacherService.getDirectionList(2017000001).forEach(d -> log.debug("{}", d));
+        log.debug("{}", teacherService.getDirectionList(2017000000));
+    }
+
+    @Test
+    public void test_get3() {
+        teacherService.getCourseList(2017000001).forEach(d -> log.debug("{}", d));
+        teacherService.getCourseList(2017000000).forEach(c -> log.debug("{}", c));
+
+    }
+
 }

@@ -22,4 +22,6 @@ public interface ElectiveReporsitory extends BaseReporsitory<Elective, UUID> {
     void remove(@Param("cid") Integer cid);
 
 
+
+
 }

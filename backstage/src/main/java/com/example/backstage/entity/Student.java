@@ -21,9 +21,7 @@ public class Student {
 
     @Column(length = 10,unique = true)
     private Integer id;
-    @Column(length = 16)
-    @JsonIgnore
-    private String password ="123456";
+
     private String name;
     private String extra;
     private Float grade;

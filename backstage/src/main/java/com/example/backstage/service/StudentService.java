@@ -27,29 +27,13 @@ public class StudentService {
     }
 
     /**
-     * 登录
-     *
-     * @param sid
-     * @param password
-     * @return
-     */
-    public Boolean login(Integer sid, String password) {
-        Student student = studentRepository.find(sid);
-        if (student != null) {
-            return student.getPassword().equals(password);
-        }
-
-        return false;
-    }
-
-    /**
      * 判断是否已经选过了
      * 选过了直接按钮置为不可点击。
      *
      * @param sid
      * @return
      */
-    public Boolean everSelected(Integer sid) {
+    public boolean everSelected(Integer sid) {
         return studentRepository.find(sid).getTeacher() != null;
     }
 

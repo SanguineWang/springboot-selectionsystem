@@ -29,6 +29,8 @@ public class Direction {
 
     @Column(columnDefinition = "timestamp default current_timestamp", insertable = false, updatable = false)
     private LocalDate insertTime;
+    @ToString.Exclude
+    @JsonIgnore
     @ManyToOne
     private Teacher teacher;
 

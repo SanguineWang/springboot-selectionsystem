@@ -26,7 +26,7 @@ public class Teacher {
     private String password = "123456";
     private String name;
     private String extra;
-    private Integer upper_limit; //学生上限
+    private Integer upper_limit ; //学生上限
     private Float mark_limit;//分数下限
     @Column(columnDefinition = "timestamp default current_timestamp", insertable = false, updatable = false)
     private LocalDate insertTime;

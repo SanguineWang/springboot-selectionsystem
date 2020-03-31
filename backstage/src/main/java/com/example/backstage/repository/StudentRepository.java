@@ -35,4 +35,7 @@ public interface StudentRepository extends BaseReporsitory<Student, UUID> {
      */
     @Query("select  s from Student s where s.id=:id")
     Student find(@Param("id") Integer id);
+
+    @Query("from Student  s where s.teacher.id=:tid")
+    List<Student> findByTeacherId(@Param("tid")Integer tid);
 }
