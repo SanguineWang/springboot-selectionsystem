@@ -1,6 +1,4 @@
 package com.example.backstage.service;
-
-import com.example.backstage.annotation.MyAuthority;
 import com.example.backstage.entity.Student;
 import com.example.backstage.entity.Teacher;
 import com.example.backstage.repository.StudentRepository;
@@ -13,7 +11,7 @@ import java.util.List;
 
 @Service
 @Transactional
-@MyAuthority(value = MyAuthority.MyAuthorityType.STUDENT)
+
 public class StudentService {
 
     @Autowired
@@ -34,7 +32,8 @@ public class StudentService {
      * @return
      */
     public boolean everSelected(Integer sid) {
-        return studentRepository.find(sid).getTeacher() != null;
+//        return studentRepository.find(sid).getTeacher() != null;
+        return false;
     }
 
     /**
@@ -46,11 +45,11 @@ public class StudentService {
      * @param tid
      */
     public void pick(Integer sid, Integer tid) {
-        Student student = studentRepository.find(sid);
-        Teacher teacher = teacherRepository.find(tid);
-        int rest = teacher.getUpper_limit() - teacher.getStudentList().size();
-        if (rest > 0) {
-            student.setTeacher(teacher);
-        }
+//        Student student = studentRepository.find(sid);
+//        Teacher teacher = teacherRepository.find(tid);
+//        int rest = teacher.getUpper_limit() - teacher.getStudentList().size();
+//        if (rest > 0) {
+//            student.setTeacher(teacher);
+//        }
     }
 }

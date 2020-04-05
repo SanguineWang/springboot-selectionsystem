@@ -20,25 +20,28 @@ public class TeacherController {
 
     @GetMapping("main")
     public Map<String, Integer> getmain(@PathVariable Integer tid) {
-        return teacherService.getSizeAndLimit(tid);
+        return teacherService.getPickAndLimit(tid);
     }
 
     @GetMapping("course")
     public Map getCourse(@PathVariable Integer tid) {
-        return Map.of("courses", teacherService.getCourseList(tid));
+//        return Map.of("courses", teacherService.getCourseList(tid));
+        return null;
     }
 
     @PostMapping("course")
     public Map addCourse(@PathVariable Integer tid,  @RequestBody Course course) {
         log.debug("{}{}", course.getName(), course.getWeight());
-        teacherService.add(tid, course);
-        return Map.of("courses", teacherService.getCourseList(tid));
+//        teacherService.add(tid, course);
+//        return Map.of("courses", teacherService.getCourseList(tid));
+        return  null;
     }
 
     @PatchMapping("course/{cid}")
     public Map updateCourse(@PathVariable Integer tid,@PathVariable Integer cid,@Validated @RequestBody Course course){
-        teacherService.update(cid,course.getName(),course.getWeight());
-        return Map.of("courses", teacherService.getCourseList(tid));
+//        teacherService.update(cid,course.getName(),course.getWeight());
+//        return Map.of("courses", teacherService.getCourseList(tid));
+        return null;
     }
 
 }

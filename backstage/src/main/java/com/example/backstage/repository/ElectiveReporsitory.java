@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.UUID;
 
 @Repository
-public interface ElectiveReporsitory extends BaseReporsitory<Elective, UUID> {
+public interface ElectiveReporsitory extends BaseReporsitory<Elective, Integer> {
 
     /**
      * 删除指定教师id，课程id的选课记录

@@ -1,6 +1,7 @@
 package com.example.backstage.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -15,17 +16,13 @@ import java.util.UUID;
 @NoArgsConstructor
 public class Student {
     @Id
-    @GeneratedValue
-    @Column(length = 16)
-    private UUID uuid;
-
-    @Column(length = 10,unique = true)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    private String name;
-    private String extra;
+    @MapsId
+    @OneToOne(cascade = CascadeType.REMOVE)
+    private User user;
     private Float grade;
-    private Boolean isSelected;
+
     @Column(columnDefinition = "timestamp default current_timestamp", insertable = false, updatable = false)
     private LocalDate insertTime;
 

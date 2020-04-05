@@ -8,10 +8,11 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Repository
-public interface StudentRepository extends BaseReporsitory<Student, UUID> {
+public interface StudentRepository extends BaseReporsitory<Student, Integer> {
     //查询所有学生
     @Query("from Student u")
     List<Student> findAll();
@@ -28,14 +29,11 @@ public interface StudentRepository extends BaseReporsitory<Student, UUID> {
     @Query("select s from Student s where s.grade>=:limit  order by s.grade desc ")
     List<Student> find(@Param("limit")Float limit);
 
-    /**
-     * 指定学生id获取学生
-     * @param id
-     * @return
-     */
-    @Query("select  s from Student s where s.id=:id")
-    Student find(@Param("id") Integer id);
 
     @Query("from Student  s where s.teacher.id=:tid")
     List<Student> findByTeacherId(@Param("tid")Integer tid);
+
+    //查询指定学号的学生
+    @Query("from Student s where s.user.number=:number")
+   Student findByNumber(@Param("number")Integer number);
 }

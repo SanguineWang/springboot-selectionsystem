@@ -1,9 +1,6 @@
 package com.example.backstage.repository;
 
-import com.example.backstage.entity.Course;
-import com.example.backstage.entity.Direction;
-import com.example.backstage.entity.Student;
-import com.example.backstage.entity.Teacher;
+import com.example.backstage.entity.*;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,36 +26,22 @@ public class RepositoryTest {
 
     @Test
     public void init() {
+        User user1 = new User();
+        user1.setRole(User.Role.TEACHER);
+        user1.setNumber(2017000001);
+
+        User user2 = new User();
+        user2.setRole(User.Role.STUDENT);
+
+        User user3 = new User();
+        user3.setRole(User.Role.STUDENT);
+
+        User user4 = new User();
+        user4.setRole(User.Role.STUDENT);
+
+
         Teacher teacher1 = new Teacher();
-        teacher1.setId(2017000001);
-        teacher1.setName("wang");
-        teacher1.setUpper_limit(10);
-        teacherRepository.save(teacher1);
 
-        Student student1 = new Student();
-        student1.setId(2017214001);
-        student1.setName("a");
-        studentRepository.save(student1);
-
-        Student student2 = new Student();
-        student2.setId(2017214002);
-        student2.setName("b");
-        studentRepository.save(student2);
-
-        Student student3 = new Student();
-        student3.setId(2017214003);
-        student3.setName("c");
-        studentRepository.save(student3);
-
-        Student student4 = new Student();
-        student4.setId(2017214004);
-        student4.setName("d");
-        studentRepository.save(student4);
-
-        Student student5 = new Student();
-        student5.setId(2017214005);
-        student5.setName("e");
-        studentRepository.save(student5);
 
 
         Course course1 = new Course();
@@ -120,7 +103,7 @@ public class RepositoryTest {
 
     @Test
     public void test_find() {
-        log.debug("{}",studentRepository.find(2017214000));
+//        log.debug("{}", studentRepository.find(2017214000));
 
     }
 }

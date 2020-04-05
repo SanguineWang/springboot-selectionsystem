@@ -2,8 +2,10 @@ package com.example.backstage.entity;
 
 import ch.qos.logback.classic.turbo.TurboFilter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -15,30 +17,27 @@ import java.util.UUID;
 @NoArgsConstructor
 public class Teacher {
     @Id
-    @GeneratedValue
-    @Column(length = 16)
-    private UUID uuid;
-
-    @Column(length = 10,unique = true)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(length = 16)
-    @JsonIgnore
-    private String password = "123456";
-    private String name;
-    private String extra;
+
+    @MapsId
+    @OneToOne
+    private User user;
+
     private Integer upper_limit ; //学生上限
     private Float mark_limit;//分数下限
+
     @Column(columnDefinition = "timestamp default current_timestamp", insertable = false, updatable = false)
     private LocalDate insertTime;
-    //学生上限
-    private Boolean isAdmin;//是否管理员
-
+    @ToString.Exclude
     @JsonIgnore
     @OneToMany(mappedBy = "teacher",fetch = FetchType.LAZY)
     private List<Student> studentList;
+    @ToString.Exclude
     @JsonIgnore
     @OneToMany(mappedBy = "teacher",fetch = FetchType.LAZY)
     private List<Course> courseList;
+    @ToString.Exclude
     @JsonIgnore
     @OneToMany(mappedBy = "teacher",fetch = FetchType.LAZY)
     private List<Direction> directionList;

@@ -5,6 +5,6 @@ import org.springframework.data.repository.NoRepositoryBean;
 
 @NoRepositoryBean
 public interface BaseReporsitory<T, ID> extends JpaRepository<T, ID> {
-    void refresh(T t);
+    T refresh(T t);
 
 }

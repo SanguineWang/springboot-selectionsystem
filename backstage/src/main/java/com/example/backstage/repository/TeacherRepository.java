@@ -10,14 +10,14 @@ import java.util.List;
 import java.util.UUID;
 
 @Repository
-public interface TeacherRepository extends BaseReporsitory<Teacher, UUID> {
+public interface TeacherRepository extends BaseReporsitory<Teacher, Integer> {
 
 
-    /**
-     * 指定老师id获取老师
-     * @param id
-     * @return
-     */
-    @Query("from Teacher t where t.id=:id")
-    Teacher find(@Param("id") Integer id);
+//    /**
+//     * 指定老师id获取老师
+//     * @param id
+//     * @return
+//     */
+//    @Query("from Teacher t where t.id=:id")
+//    Teacher find(@Param("id") Integer id);
 }

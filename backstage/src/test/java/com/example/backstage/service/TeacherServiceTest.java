@@ -1,15 +1,12 @@
 package com.example.backstage.service;
 
-import com.example.backstage.entity.Student;
+import com.example.backstage.entity.*;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Slf4j
@@ -17,108 +14,129 @@ public class TeacherServiceTest {
     @Autowired
     private TeacherService teacherService;
 
-    /**
-     * 更新密码
-     * 测试成功
-     */
     @Test
-    void update() {
-        teacherService.update(2017000001, "666666");
+    public void test_addTeacher() {
+        User user = new User();
+        user.setName("SanguineWang");
+        user.setNumber(2017000001);
+        user.setPassword("123456");
+        Teacher teacher = new Teacher();
+        teacherService.addTeacher(teacher, user);
     }
 
-    /**
-     * 更新其他信息，范围，指导学生数
-     * 测试成功
-     */
     @Test
-    void testUpdate() {
-        teacherService.update(2017000001, 12, Float.valueOf("80"));
-    }
-
-    /**
-     * 添加方向
-     * 测试成功
-     */
-    @Test
-    void add() {
-        teacherService.add(2017000001, "test");
-    }
-
-    /**
-     * 修改方向
-     * 测试成功
-     */
-    @Test
-    void updateDirection() {
-        teacherService.updateDirection(5, "test2");
-    }
-
-    /**
-     * 创建课程。
-     * 包括课程名称，权重。
-     * test OK
-     */
-    @Test
-    void testAdd() {
-//        teacherService.add(2017000001, "test", Float.valueOf("1"));
-    }
-
-    /**
-     * 修改课程信息
-     * test OK
-     */
-    @Test
-    void testUpdate1() {
-        teacherService.update(5, "Docker学习小组", Float.valueOf("5"));
-    }
-
-    /**
-     * 为指定课程添加 (基于学号，姓名，成绩)学生
-     * 录入成绩
-     * 再次调用删除所有指定课程的选课记录，相当于更新
-     * test OK
-     */
-    @Test
-    void testAdd1() {
-
+    public void test_addStudent() {
+        User user = new User();
+        user.setName("SanguineWang");
+        user.setNumber(2017214001);
+        user.setPassword("123456");
         Student student = new Student();
-        student.setId(2017214006);
-        student.setName("q");
-        student.setGrade(Float.valueOf("80"));
+        teacherService.addStudent(student, user);
+    }
 
+    @Test
+    public void test_addCourse() {
+        Course c = new Course();
+        c.setName("web前端");
+        c.setWeight(Float.valueOf("2.5"));
+        teacherService.addCourse(c, 5);
+
+        Course c2 = new Course();
+        c2.setName("web系统框架");
+        c2.setWeight(Float.valueOf("2.5"));
+        teacherService.addCourse(c2, 5);
+
+    }
+
+    @Test
+    public void test_addDirection() {
+        Direction direction1 = new Direction();
+        direction1.setName("当前企业实习项目");
+        teacherService.addDirection(direction1, 5);
+    }
+
+    @Test
+    public void test_addStudentsToCourse() {
+        User user1 = new User();
+        user1.setRole(User.Role.STUDENT);
+        user1.setNumber(2017214002);
+        Student student1 = new Student();
+        student1.setGrade(Float.valueOf("98"));
+        teacherService.addStudent(student1, user1);
+//        log.debug("\n{}", student1.getUser().getNumber());
+
+        User user2 = new User();
+        user2.setRole(User.Role.STUDENT);
+        user2.setNumber(2017214003);
         Student student2 = new Student();
-        student2.setId(2017214001);
-        student2.setName("a");
-        student2.setGrade(Float.valueOf("90"));
+        student2.setGrade(Float.valueOf("88"));
+        teacherService.addStudent(student2, user2);
+//        log.debug("\n{}", student2.getUser().getNumber());
 
-        List<Student> students = new ArrayList<>();
-        students.add(student);
-        students.add(student2);
+        User user3 = new User();
+        user3.setRole(User.Role.STUDENT);
+        user3.setNumber(2017214004);
+        Student student3 = new Student();
+        student3.setGrade(Float.valueOf("78"));
+        teacherService.addStudent(student3, user3);
+//        log.debug("\n{}", student3.getUser().getNumber());
 
-        teacherService.add(1, students);
+        teacherService.addStudentsToCourse(1, List.of(student1, student2, student3));
     }
 
-    /**
-     * 添加学生
-     * test OK
-     */
     @Test
-    void testAdd2() {
-        teacherService.add(2017000001, 2017214001, "wang");
+    public void test_getCourses() {
+        teacherService.getCourses(5).forEach(c -> {
+            log.debug("\n {}", c.getName());
+        });
     }
 
-    /**
-     * 验证密码
-     * test OK
-     */
     @Test
-    void login() {
-
-        log.debug("{}", teacherService.login(2017000001, "123"));
-        log.debug("{}", teacherService.login(2017000001, "123456"));
-
+    public void test_getDirection() {
+        teacherService.getDirectionList(5).forEach(d -> {
+            log.debug("\n {}", d.getName());
+        });
     }
 
+    @Test
+    public void test_getStudents() {
+        teacherService.getStudentList(5).forEach(s -> {
+            log.debug("\n {}", s.getUser().getNumber());
+        });
+    }
+
+    @Test
+    public void test_getPickAndLimit() {
+        log.debug("{}", teacherService.getPickAndLimit(5));
+    }
+
+    @Test
+    public void updatePassword() {
+        teacherService.updatePassword(5, "666665");
+    }
+
+    @Test
+    public void test_updateOthervariable() {
+        teacherService.update(5, 12, Float.valueOf("80"));
+    }
+
+    @Test
+    public void test_updateCourse() {
+        teacherService.updateCourse(1, "java", Float.valueOf("2"));
+    }
+
+    @Test
+    public void test_updateDirection() {
+        teacherService.updateDirection(1, "当前企业实习项目");
+    }
+
+    @Test
+    public void startAndCalculate() {
+        teacherService.startAndCalculate(5);
+    }
+
+
+// ##
     /**
      * 获取有资格选课的同学
      * 成绩排名
@@ -126,34 +144,31 @@ public class TeacherServiceTest {
      */
     @Test
     void get() {
-        teacherService.get(2017000001, Float.valueOf("200")).forEach(s -> log.debug("{} {} \n{}", s.getGrade(), s.getName(), s));
+
     }
 
     /**
      * test ok
      * 加权成绩计算
      */
-    @Test
-    void start() {
-        teacherService.start(2017000001);
-    }
+
 
     @Test
     public void test_get() {
-        log.debug("{}", teacherService.getStudentList(2017000001));
-        log.debug("{}", teacherService.getStudentList(2017000000));
+//        log.debug("{}", teacherService.getStudentList(2017000001));
+//        log.debug("{}", teacherService.getStudentList(2017000000));
     }
 
     @Test
     public void test_get2() {
-        teacherService.getDirectionList(2017000001).forEach(d -> log.debug("{}", d));
-        log.debug("{}", teacherService.getDirectionList(2017000000));
+//        teacherService.getDirectionList(2017000001).forEach(d -> log.debug("{}", d));
+//        log.debug("{}", teacherService.getDirectionList(2017000000));
     }
 
     @Test
     public void test_get3() {
-        teacherService.getCourseList(2017000001).forEach(d -> log.debug("{}", d));
-        teacherService.getCourseList(2017000000).forEach(c -> log.debug("{}", c));
+//        teacherService.getCourseList(2017000001).forEach(d -> log.debug("{}", d));
+//        teacherService.getCourseList(2017000000).forEach(c -> log.debug("{}", c));
 
     }
 

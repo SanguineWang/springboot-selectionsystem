@@ -5,6 +5,6 @@ import com.example.backstage.repository.impl.BaseReporsitoryImpl;
 
 import java.util.UUID;
 
-public interface ChooseDirectionReporsitory extends BaseReporsitory<ChooseDirection, UUID> {
+public interface ChooseDirectionReporsitory extends BaseReporsitory<ChooseDirection, Integer> {
 
 }

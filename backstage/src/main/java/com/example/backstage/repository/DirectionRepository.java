@@ -1,5 +1,6 @@
 package com.example.backstage.repository;
 
+import com.example.backstage.entity.Course;
 import com.example.backstage.entity.Direction;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -11,12 +12,13 @@ import java.util.UUID;
 @Repository
 public interface DirectionRepository extends BaseReporsitory<Direction, Integer> {
     /**
-     * 根据方向id 查方向
-     * @param directionid
-     * @return
+     * 查询教师指定方向名的方向
+     * @param tid 教师id
+     * @param dname 方向名
+     * @return Direction
      */
-    @Query("select d from Direction d where  d.id=:directionid")
-    Direction find(@Param("directionid") Integer directionid);
+    @Query("from Direction d where d.name=:dname and d.teacher.id=:tid")
+    Direction findByName(@Param("dname")String dname , @Param("tid")Integer tid);
 
     /**
      * @param tid 教师工号

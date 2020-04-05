@@ -9,20 +9,19 @@ import java.util.List;
 import java.util.UUID;
 
 @Repository
-public interface CourseRepository extends BaseReporsitory<Course , Integer> {
+public interface CourseRepository extends BaseReporsitory<Course, Integer> {
     /**
-     * 根据课程id 查询课程
-     * @param cid
+     * 查询教师指定课程名的课程
+     * @param tid
+     * @param cname
      * @return
      */
-
-    @Query("from Course c where c.id=:cid")
-    Course find(@Param("cid")Integer cid);
-
+    @Query("from Course c where c.name=:cname and c.teacher.id=:tid")
+    Course findByName(@Param("cname")String cname ,@Param("tid")Integer tid);
     /**
      * @param tid 教师工号
      * @return 课程集合
      */
     @Query("from Course c where c.teacher.id=:tid")
-    List<Course> findByTeacherId(@Param("tid")Integer tid);
+    List<Course> findByTeacherId(@Param("tid") Integer tid);
 }
