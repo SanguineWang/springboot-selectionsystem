@@ -108,3 +108,7 @@ Error executing DDL "create table student (id integer not null, extra varchar(25
 ```text
 类似秒杀选人的设计
 ```
+## 2020/4/6
+* Improvenments 
+    * 从student 和 teacher 分离出 user实体
+    * 重写service层（大部分完整），对容器.ifpresentOrElse分别打印日志
