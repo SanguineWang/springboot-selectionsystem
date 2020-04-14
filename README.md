@@ -26,6 +26,9 @@
 
 ### :bookmark_tabs: Change Log 
 #### V0.1.4 (2020/4/5 23:56) :astonished:
+* New 
+    *TeacherController
+#### V0.1.4 (2020/4/5 23:56) :astonished:
 * Improvenments 
     * 从student 和 teacher 分离出 user实体
     * 重写service层（大部分完整），对容器.ifpresentOrElse分别打印日志

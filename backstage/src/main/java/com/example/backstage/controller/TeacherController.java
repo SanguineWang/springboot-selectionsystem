@@ -72,7 +72,6 @@ public class TeacherController {
         return Map.of("courses", teacherService.getCourses(tid));
     }
 
-
     @PatchMapping("direction/{did}")
     public Map addDirection(@PathVariable Integer tid, @PathVariable Integer did, @RequestBody Direction direction) {
         teacherService.updateDirection(did, direction.getName());
@@ -84,6 +83,7 @@ public class TeacherController {
         teacherService.removeCourse(cid);
         return Map.of("courses", teacherService.getCourses(tid));
     }
+
     @DeleteMapping("direction/{did}")
     public Map removeDirection(@PathVariable Integer tid, @PathVariable Integer did){
         teacherService.removeDirection(did);
