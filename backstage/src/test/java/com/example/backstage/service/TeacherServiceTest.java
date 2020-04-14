@@ -93,7 +93,7 @@ public class TeacherServiceTest {
 
     @Test
     public void test_getDirection() {
-        teacherService.getDirectionList(5).forEach(d -> {
+        teacherService.getDirections(5).forEach(d -> {
             log.debug("\n {}", d.getName());
         });
     }
@@ -107,11 +107,11 @@ public class TeacherServiceTest {
 
     @Test
     public void test_getPickAndLimit() {
-        log.debug("{}", teacherService.getPickAndLimit(5));
+        log.debug("\n{}", teacherService.getPickAndLimit(5));
     }
 
     @Test
-    public void updatePassword() {
+    public void test_updatePassword() {
         teacherService.updatePassword(5, "666665");
     }
 
@@ -131,45 +131,30 @@ public class TeacherServiceTest {
     }
 
     @Test
-    public void startAndCalculate() {
+    public void test_startAndCalculate() {
         teacherService.startAndCalculate(5);
     }
 
-
-// ##
-    /**
-     * 获取有资格选课的同学
-     * 成绩排名
-     * test ok
-     */
     @Test
-    void get() {
-
-    }
-
-    /**
-     * test ok
-     * 加权成绩计算
-     */
-
-
-    @Test
-    public void test_get() {
-//        log.debug("{}", teacherService.getStudentList(2017000001));
-//        log.debug("{}", teacherService.getStudentList(2017000000));
+    public void test_getQualifiedstudents() {
+      teacherService.getQualifiedstudents(5, 80f)
+              .forEach(s->log.debug("\n number :{} grade:{}",s.getUser().getNumber(),s.getGrade()));
     }
 
     @Test
-    public void test_get2() {
-//        teacherService.getDirectionList(2017000001).forEach(d -> log.debug("{}", d));
-//        log.debug("{}", teacherService.getDirectionList(2017000000));
+    public void test_addStudentForTeacher(){
+        User user=new User();
+        user.setNumber(2017214001);
+        user.setName("SanguineWang");
+        Student student=new Student();
+        teacherService.addStudent(student,user);
+        teacherService.addStudentForTeacher(5,2017214001);
     }
 
     @Test
-    public void test_get3() {
-//        teacherService.getCourseList(2017000001).forEach(d -> log.debug("{}", d));
-//        teacherService.getCourseList(2017000000).forEach(c -> log.debug("{}", c));
-
+    public void test_removeStudent(){
+        teacherService.removeStudent(5,2017214002);
+        teacherService.removeStudent(5,2017214001);
     }
-
+//
 }

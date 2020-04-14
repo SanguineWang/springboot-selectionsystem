@@ -34,7 +34,7 @@ public class Course {
 
     @ToString.Exclude
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @OneToMany(mappedBy = "course")
+    @OneToMany(mappedBy = "course",cascade =CascadeType.REMOVE )
     private List<Elective> electiveList;
 
     @ManyToOne

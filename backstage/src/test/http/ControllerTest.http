@@ -1,3 +1,19 @@
+GET http://localhost:8081/api/teacher/5/directions/1
+Accept: application/json
+
+###
+GET http://localhost:8081/api/teacher/5/courses/1
+Accept: application/json
+
+###
+GET http://localhost:8081/api/teacher/5/courses
+Accept: application/json
+
+###
+GET http://localhost:8081/api/teacher/5/students
+Accept: application/json
+
+###
 PATCH http://localhost:8081/teacher/2017000001/course/10
 Content-Type: application/json
 
@@ -17,7 +33,6 @@ Content-Type: application/json
 
 }
 
-
 ###
 GET http://localhost:8081/teacher/2017000001/course
 Accept: application/json
@@ -27,7 +42,7 @@ GET http://localhost:8081/teacher/2017000001/main
 Accept: application/json
 
 ###
-GET http://localhost:8081/students/allStudent
+GET http://localhost:8081/student/allStudent
 Accept: application/json
 
 ###

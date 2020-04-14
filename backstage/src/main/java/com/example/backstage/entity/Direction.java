@@ -37,7 +37,7 @@ public class Direction {
 
     @ToString.Exclude
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @OneToMany(mappedBy = "direction")
+    @OneToMany(mappedBy = "direction",cascade = CascadeType.REMOVE)
     private List<ChooseDirection> chooseDirections;
 
 

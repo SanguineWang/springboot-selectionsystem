@@ -10,14 +10,10 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/student/")
+@RequestMapping("api/student/")
 public class StudentController {
     @Autowired
     private StudentService studentService;
 
-    @GetMapping("allStudent")
-    public List<Student> allStudent(){
-        return  studentService.getAllStudent();
-    }
 
 }

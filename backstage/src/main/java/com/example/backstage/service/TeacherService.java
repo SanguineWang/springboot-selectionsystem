@@ -36,7 +36,7 @@ public class TeacherService {
     public void addTeacher(Teacher t, User u) {
         u.setRole(User.Role.TEACHER);
         t.setUser(u);
-        Optional.ofNullable(userRepository.findByNumber(u.getNumber())).ifPresentOrElse(user -> {
+       Optional.ofNullable(userRepository.findByNumber(u.getNumber())).ifPresentOrElse(user -> {
             log.debug("\n用户- {} 已存在", user.getNumber());
         }, () -> {
             log.debug("\n添加教師用户-{}", u.getNumber());
@@ -144,6 +144,76 @@ public class TeacherService {
     }
 
     /**
+     * 老师提前添加敲定的学生 ，控制层配合addStudent使用，先创建user和student实体
+     *
+     * @param tid    teacherId
+     * @param number studentId
+     */
+    public void addStudentForTeacher(Integer tid, Integer number) {
+        teacherRepository.findById(tid).ifPresentOrElse(t -> {
+            Student student = studentRepository.findByNumber(number);
+            if (student.getTeacher() == null) {
+                student.setTeacher(t);
+            } else {
+                log.debug("{} 已存在teacher ", student.getUser().getNumber());
+            }
+            studentRepository.saveAndFlush(student);
+            log.debug("\n 教师{} 已 pick student：{}",
+                    studentRepository.refresh(student).getTeacher().getUser().getNumber(),
+                    number);
+        }, () -> {
+            log.debug("\n未找到该教师");
+        });
+    }
+
+    /**
+     * 移除指导的学生
+     *
+     * @param tid    tid
+     * @param number number
+     */
+    public void removeStudent(Integer tid, Integer number) {
+        Optional.ofNullable(studentRepository.findByNumberAndTid(number, tid))
+                .ifPresentOrElse(s -> {
+                    s.setTeacher(null);
+                    studentRepository.saveAndFlush(s);
+                    log.debug("\n student' teacher :{}", studentRepository.refresh(s).getTeacher());
+                }, () -> {
+                    log.debug("\n Student:{} 不存在或者没选 tid:{}的老师", number, tid);
+                });
+    }
+
+    /**
+     * 移除方向
+     * @param did directionId
+     */
+    public void removeDirection( Integer did) {
+        directionRepository.findById(did)
+                .ifPresentOrElse(d -> {
+                    directionRepository.deleteById(d.getId());
+                    log.debug("删除成功");
+                }, () -> {
+                    log.debug("\n direction:{} 不存在", did);
+                });
+    }
+
+    /**
+     * 移除课程
+     * @param cid courseId
+     */
+    public void removeCourse(Integer cid) {
+        courseRepository.findById(cid)
+                .ifPresentOrElse(c -> {
+                    courseRepository.deleteById(c.getId());
+                    log.debug("删除成功");
+                }, () -> {
+                    log.debug("\n course:{} 不存在", cid);
+                });
+
+    }
+
+
+    /**
      * 教师的所有课程
      *
      * @param tid teacherId
@@ -153,6 +223,23 @@ public class TeacherService {
         return Optional.ofNullable(courseRepository.findByTeacherId(tid))
                 .orElse(List.of());
     }
+    /**
+     * 获取指定课程
+     * @return courses
+     */
+    public Course getCourse(Integer cid) {
+        return courseRepository.findById(cid)
+                .orElse(new Course());
+    }
+
+    /**
+     * 获取指定课程所有学生
+     * @return courses
+     */
+    public List<Student> getStudentsFromCourse(Integer cid) {
+        return  Optional.ofNullable(studentRepository.FromCourseGetStudent(cid))
+                .orElse(List.of());
+    }
 
     /**
      * 获取教师毕设方向
@@ -160,8 +247,36 @@ public class TeacherService {
      * @param tid teacherId
      * @return directions
      */
-    public List<Direction> getDirectionList(Integer tid) {
+    public List<Direction> getDirections(Integer tid) {
         return Optional.ofNullable(directionRepository.findByTeacherId(tid))
+                .orElse(List.of());
+    }
+    /**
+     * 获取指定毕设方向
+     *
+     * @return directions
+     */
+    public Direction getDirection(Integer did) {
+        return directionRepository.findById(did)
+                .orElse(new Direction());
+    }
+    /**
+     * 获取指定毕设方向所有学生
+     * @return directions
+     */
+    public List<Student> getStudentsFromDirection(Integer did) {
+        return Optional.ofNullable(studentRepository.FromDirectionGetStudent(did))
+                .orElse(List.of());
+    }
+
+
+    /**
+     * 获取教师指导学生集合
+     *
+     * @return teacher's students
+     */
+    public List<Student> getAllStudents() {
+        return Optional.ofNullable(studentRepository.findAll())
                 .orElse(List.of());
     }
 
@@ -231,7 +346,6 @@ public class TeacherService {
             log.debug("\n 没有该教师{}", tid);
         });
     }
-//☆
 
     /**
      * 修改课程信息
@@ -286,7 +400,7 @@ public class TeacherService {
                                     .stream()
                                     .mapToDouble(e -> e.getCourse().getWeight()).sum())
                                     .floatValue();
-                            log.debug("\n student:{} 累计学分比重 denominator:{}", s.getUser().getNumber(),denominator);
+                            log.debug("\n student:{} 累计学分比重 denominator:{}", s.getUser().getNumber(), denominator);
                             s.getElectiveList().forEach(e -> {
                                         e.getStudent().setGrade(e.getStudent().getGrade() + (e.getCourse().getWeight() * e.getGrade()));
                                         log.debug("\n student：{} | course：{} | grade {}", e.getStudent().getUser().getNumber(), e.getCourse().getName(), e.getGrade());
@@ -306,13 +420,12 @@ public class TeacherService {
     /**
      * 返回当前教师指定成绩范围的有资格的学生集合，按照加权成绩排序,(存入redis缓存)
      *
-     * @param tid
-     * @param weight
-     * @return
+     * @param tid    teacherId
+     * @param weight weight
+     * @return Qualified students
      */
-    public List<Student> get(Integer tid, Float weight) {
-//        Teacher teacher = teacherRepository.find(tid);//假的，没用
-        return Optional.ofNullable(studentRepository.find(weight))
+    public List<Student> getQualifiedstudents(Integer tid, Float weight) {
+        return Optional.ofNullable(studentRepository.findByLimit(weight))
                 .orElse(List.of());
 
     }
