@@ -16,15 +16,10 @@ import java.util.UUID;
 @NoArgsConstructor
 public class Course {
 
-    //    @Id
-//    @GeneratedValue
-//    @Column(length = 16)
-//    private UUID uuid;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(unique = true)
     private String name;
     private String extra;
     private Float weight;

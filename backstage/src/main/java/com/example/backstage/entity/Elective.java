@@ -25,11 +25,9 @@ public class Elective {
     private LocalDate insertTime;
 
     @ManyToOne
-    @ToString.Exclude
-    @JsonIgnore
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Course course;
     @ManyToOne
-    @ToString.Exclude
-    @JsonIgnore
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Student student;
 }

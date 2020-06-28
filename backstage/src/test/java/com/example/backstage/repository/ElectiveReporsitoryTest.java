@@ -26,13 +26,15 @@ public class ElectiveReporsitoryTest {
     private CourseRepository courseRepository;
     @Autowired
     private StudentRepository studentRepository;
-
     @Test
-    public void test_add() {
-
-
-
+    public void test_findStudentsByCourseId(){
+        electiveReporsitory.findStudentsByCourseId(1).forEach(
+                student -> {
+                    System.out.println(student.getId());
+                }
+        );
     }
+
 
     @Test
     public void test_addelective() {

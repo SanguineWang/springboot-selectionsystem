@@ -44,13 +44,4 @@ public interface StudentRepository extends BaseReporsitory<Student, Integer> {
     @Query("from Student s where s.user.number=:number")
     Student findByNumber(@Param("number")Integer number);
 
-    //查询指定学号和指定老师的学生
-    @Query("from Student s where s.user.number=:number and s.teacher.id=:tid")
-    Student findByNumberAndTid(@Param("number")Integer number,@Param("tid")Integer tid);
-
-//    //删除
-//    @Modifying
-//    @Transactional
-//    @Query("delete from Elective e where e.course.id =:cid")
-//    void remove(@Param("cid") Integer cid);
 }

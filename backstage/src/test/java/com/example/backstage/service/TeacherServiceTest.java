@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.List;
 
@@ -13,7 +14,8 @@ import java.util.List;
 public class TeacherServiceTest {
     @Autowired
     private TeacherService teacherService;
-
+    @Autowired
+    private PasswordEncoder passwordEncoder;
     @Test
     public void test_addTeacher() {
         User user = new User();
@@ -21,17 +23,20 @@ public class TeacherServiceTest {
         user.setNumber(2017000001);
         user.setPassword("123456");
         Teacher teacher = new Teacher();
-        teacherService.addTeacher(teacher, user);
+        teacher.setUser(user);
+        teacherService.addTeacher(teacher);
     }
 
     @Test
     public void test_addStudent() {
         User user = new User();
         user.setName("SanguineWang");
-        user.setNumber(2017214001);
+        user.setNumber(2017214005);
+        user.setRole(User.Role.STUDENT);
         user.setPassword("123456");
         Student student = new Student();
-        teacherService.addStudent(student, user);
+        student.setUser(user);
+        teacherService.addStudent(student);
     }
 
     @Test
@@ -48,12 +53,6 @@ public class TeacherServiceTest {
 
     }
 
-    @Test
-    public void test_addDirection() {
-        Direction direction1 = new Direction();
-        direction1.setName("当前企业实习项目");
-        teacherService.addDirection(direction1, 5);
-    }
 
     @Test
     public void test_addStudentsToCourse() {
@@ -62,7 +61,8 @@ public class TeacherServiceTest {
         user1.setNumber(2017214002);
         Student student1 = new Student();
         student1.setGrade(Float.valueOf("98"));
-        teacherService.addStudent(student1, user1);
+        student1.setUser(user1);
+        teacherService.addStudent(student1);
 //        log.debug("\n{}", student1.getUser().getNumber());
 
         User user2 = new User();
@@ -70,7 +70,8 @@ public class TeacherServiceTest {
         user2.setNumber(2017214003);
         Student student2 = new Student();
         student2.setGrade(Float.valueOf("88"));
-        teacherService.addStudent(student2, user2);
+        student2.setUser(user2);
+        teacherService.addStudent(student2);
 //        log.debug("\n{}", student2.getUser().getNumber());
 
         User user3 = new User();
@@ -78,7 +79,8 @@ public class TeacherServiceTest {
         user3.setNumber(2017214004);
         Student student3 = new Student();
         student3.setGrade(Float.valueOf("78"));
-        teacherService.addStudent(student3, user3);
+        student3.setUser(user3);
+        teacherService.addStudent(student3);
 //        log.debug("\n{}", student3.getUser().getNumber());
 
         teacherService.addStudentsToCourse(1, List.of(student1, student2, student3));
@@ -97,64 +99,20 @@ public class TeacherServiceTest {
             log.debug("\n {}", d.getName());
         });
     }
-
     @Test
-    public void test_getStudents() {
-        teacherService.getStudentList(5).forEach(s -> {
-            log.debug("\n {}", s.getUser().getNumber());
-        });
+    public void test_encoder() {
+        log.debug(passwordEncoder.encode("123456") )   ;
     }
 
-    @Test
-    public void test_getPickAndLimit() {
-        log.debug("\n{}", teacherService.getPickAndLimit(5));
-    }
 
     @Test
     public void test_updatePassword() {
-        teacherService.updatePassword(5, "666665");
+        teacherService.updatePassword(1,"123456","654321");
+    }
+    @Test
+    public void test_updatePassword2() {
+
+        teacherService.updatePassword(1,"654321","654321");
     }
 
-    @Test
-    public void test_updateOthervariable() {
-        teacherService.update(5, 12, Float.valueOf("80"));
-    }
-
-    @Test
-    public void test_updateCourse() {
-        teacherService.updateCourse(1, "java", Float.valueOf("2"));
-    }
-
-    @Test
-    public void test_updateDirection() {
-        teacherService.updateDirection(1, "当前企业实习项目");
-    }
-
-    @Test
-    public void test_startAndCalculate() {
-        teacherService.startAndCalculate(5);
-    }
-
-    @Test
-    public void test_getQualifiedstudents() {
-      teacherService.getQualifiedstudents(5, 80f)
-              .forEach(s->log.debug("\n number :{} grade:{}",s.getUser().getNumber(),s.getGrade()));
-    }
-
-    @Test
-    public void test_addStudentForTeacher(){
-        User user=new User();
-        user.setNumber(2017214001);
-        user.setName("SanguineWang");
-        Student student=new Student();
-        teacherService.addStudent(student,user);
-        teacherService.addStudentForTeacher(5,2017214001);
-    }
-
-    @Test
-    public void test_removeStudent(){
-        teacherService.removeStudent(5,2017214002);
-        teacherService.removeStudent(5,2017214001);
-    }
-//
 }

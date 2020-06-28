@@ -1,6 +1,7 @@
 package com.example.backstage.repository;
 
 import com.example.backstage.entity.Course;
+import com.example.backstage.entity.Student;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -25,6 +26,8 @@ public interface CourseRepository extends BaseReporsitory<Course, Integer> {
      */
     @Query("from Course c where c.teacher.id=:tid")
     List<Course> findByTeacherId(@Param("tid") Integer tid);
+
+
 
 
 }

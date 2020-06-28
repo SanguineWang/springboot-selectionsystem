@@ -10,14 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class StudentServiceTest {
     @Autowired
     private StudentService studentService;
-    @Test
-    public void test_getGuidanceTeacher() {
-        log.debug("\n teacher : {}", studentService.getGuidanceTeacher(10));
-    }
 
-    @Test
-    public void test_getallStudent() {
-        log.debug("\n student: {}", studentService.getAllStudent());
-    }
+
 
 }

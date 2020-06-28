@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 @Data
@@ -15,18 +17,23 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private String name;
+
     @Column(unique = true)
     private Integer number;
+
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Role role;
+
     @Column(columnDefinition = "timestamp default current_timestamp", insertable = false, updatable = false)
     private LocalDate insertTime;
 
     public enum Role{
-        STUDENT,TEACHER
+        STUDENT,TEACHER,ADMIN
     }
 
 }

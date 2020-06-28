@@ -1,10 +1,12 @@
 package com.example.backstage.repository;
 
+import com.example.backstage.component.EncryptComponent;
 import com.example.backstage.entity.*;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,25 +25,32 @@ public class RepositoryTest {
     private TeacherRepository teacherRepository;
     @Autowired
     private DirectionRepository directionRepository;
-
+    @Autowired
+    private PasswordEncoder encoder;
     @Test
-    public void init() {
+    public void init_test() {
+        Teacher teacher1 = teacherRepository.findByNumber(2017000001);
+
         User user1 = new User();
-        user1.setRole(User.Role.TEACHER);
-        user1.setNumber(2017000001);
+        user1.setRole(User.Role.STUDENT);
+        user1.setName("test1");
+        user1.setNumber(2017214002);
+        user1.setPassword( encoder.encode("123456"));
+
+        Student student1 =new Student();
+        student1.setUser(user1);
+        student1.setTeacher(teacher1);
+        studentRepository.save(student1);
 
         User user2 = new User();
         user2.setRole(User.Role.STUDENT);
-
-        User user3 = new User();
-        user3.setRole(User.Role.STUDENT);
-
-        User user4 = new User();
-        user4.setRole(User.Role.STUDENT);
-
-
-        Teacher teacher1 = new Teacher();
-
+        user1.setName("test2");
+        user2.setNumber(2017214001);
+        user2.setPassword( encoder.encode("123456"));
+        Student student2 =new Student();
+        student2.setUser(user2);
+        student2.setTeacher(teacher1);
+        studentRepository.save(student2);
 
 
         Course course1 = new Course();

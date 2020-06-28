@@ -27,43 +27,7 @@
 ```text
 项目初始化
     设计实体类关系，建立:学生，课程，选课表，老师实体，账户密码绑定到用户（学生和老师）实体,设计成绩到选课表，
-    Student{
-            int id;
-            String password ="123456";
-            String name;
-            String extra;
-            //加权
-            Float grade;
-            Boolean isSelected;
-            List<Elective> electiveList;
-            Teacher teacher;
-           }
-    teacher{
-            int id;
-            String password = "123456";
-            String name;
-            String extra;
-            //学生上限
-            int upper_limit;
-            List<Student> studentList;
-            List<Course> courseList;
-           }
-    Course{
-            int id;
-            String name;
-            String extra;
-            float weight;
-            float lowest;
-            List<Elective> electiveList;
-            Teacher teacher;
-          }
-    Elective{
-            int id;
-            String extra;
-            float grade;
-            Course course;
-            Student student;
-            }
+
 ```
 
 * BUG 
@@ -103,12 +67,11 @@ Error executing DDL "create table student (id integer not null, extra varchar(25
  @ToString.Exclude
 //在属性many端进行声明
 ```
-## 2020/3/29
-* To be completed
-```text
-类似秒杀选人的设计
-```
+
 ## 2020/4/6
 * Improvenments 
     * 从student 和 teacher 分离出 user实体
-    * 重写service层（大部分完整），对容器.ifpresentOrElse分别打印日志
+    * 重写service层
+## 2020/6/27
+* Improvenments 
+    * 基于token分角色登录

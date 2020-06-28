@@ -1,16 +1,129 @@
-GET http://localhost:8081/api/teacher/5/directions/1
+GET http://localhost:8080/api/student/teachers/1
+authorization: {{token2}}
+Accept: application/json
+
+GET http://localhost:8080/api/student/myInfo
+authorization: {{token2}}
 Accept: application/json
 
 ###
-GET http://localhost:8081/api/teacher/5/courses/1
+GET http://localhost:8080/api/student/teachers
+authorization: {{token2}}
 Accept: application/json
 
 ###
-GET http://localhost:8081/api/teacher/5/courses
+GET http://localhost:8080/api/student/qualified
+authorization: {{token2}}
 Accept: application/json
 
 ###
-GET http://localhost:8081/api/teacher/5/students
+
+
+POST http://localhost:8080/api/login
+Content-Type: application/json
+
+{
+  "number" : "2017214002",
+  "password": "123456"
+}
+> {% client.global.set("token2",response.headers.valueOf("authorization")); %}
+
+
+###
+#-------------------------------------------------teacher
+GET http://localhost:8080/api/teacher/selected
+authorization: {{token}}
+Accept: application/json
+###
+GET http://localhost:8080/api/teacher/qualified
+authorization: {{token}}
+Accept: application/json
+###
+
+GET http://localhost:8080/api/teacher/courses/1/students
+authorization: {{token}}
+Accept: application/json
+###
+PATCH http://localhost:8080/api/teacher/courses/7
+authorization: {{token}}
+Content-Type: application/json
+
+{
+  "name":"teat",
+  "weight": 2
+}
+###
+DELETE http://localhost:8080/api/teacher/courses/6
+authorization: {{token}}
+Accept: application/json
+
+###
+GET http://localhost:8080/api/teacher/courses/1
+authorization: {{token}}
+Accept: application/json
+
+###
+POST http://localhost:8080/api/teacher/updatePassword
+authorization: {{token}}
+Content-Type: application/json
+
+  [ "654321", "123456"]
+
+###
+POST http://localhost:8080/api/teacher/courses
+authorization: {{token}}
+Content-Type: application/json
+
+{
+ "name":"teat",
+ "weight": 1.5
+}
+###
+GET http://localhost:8080/api/teacher/courses
+authorization: {{token}}
+Accept: application/json
+
+###
+GET http://localhost:8080/api/teacher/myStudents
+authorization: {{token}}
+Accept: application/json
+
+###
+GET http://localhost:8080/api/teacher/settings
+authorization: {{token}}
+Accept: application/json
+
+###
+GET http://localhost:8080/api/teacher/directions
+authorization: {{token}}
+Accept: application/json
+###
+
+
+POST http://localhost:8080/api/login
+Content-Type: application/json
+
+{
+  "number" : "2017000001",
+  "password": "123456"
+}
+> {% client.global.set("token",response.headers.valueOf("authorization")); %}
+###
+GET http://localhost:8080/api/teacher/directions/1
+authorization: {{token}}
+Accept: application/json
+
+###
+GET http://localhost:8080/api/teacher/courses/1
+Accept: application/json
+
+###
+GET http://localhost:8080/api/teacher/courses
+authorization: {{token}}
+Accept: application/json
+
+###
+GET http://localhost:8081/api/teacher/students
 Accept: application/json
 
 ###
@@ -38,11 +151,8 @@ GET http://localhost:8081/teacher/2017000001/course
 Accept: application/json
 
 ###
-GET http://localhost:8081/teacher/2017000001/main
-Accept: application/json
-
-###
 GET http://localhost:8081/student/allStudent
 Accept: application/json
+
 
 ###

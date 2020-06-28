@@ -19,7 +19,7 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @MapsId
-    @OneToOne(cascade = CascadeType.REMOVE)
+    @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
     private User user;
     private Float grade;
 
@@ -36,7 +36,6 @@ public class Student {
     private List<ChooseDirection> chooseDirections;
 
     @ToString.Exclude
-    @JsonIgnore
     @ManyToOne
     private Teacher teacher;
 

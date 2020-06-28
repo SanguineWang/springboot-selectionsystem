@@ -23,7 +23,7 @@ public class ChooseDirection {
     private LocalDate insertTime;
     @ManyToOne
     @ToString.Exclude
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Direction direction;
     @ManyToOne
     @ToString.Exclude
