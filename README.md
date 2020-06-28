@@ -25,9 +25,13 @@
     * Docker :penguin:
 
 ### :bookmark_tabs: Change Log 
+#### v1.0.0（2020/6/28）
+* New 
+    * studentControler
+    * 前后端整合测试
 #### V0.1.4 (2020/4/14 14:39) :flushed:
 * New 
-    *TeacherController
+    * TeacherController
 #### V0.1.4 (2020/4/5 23:56) :astonished:
 * Improvenments 
     * 从student 和 teacher 分离出 user实体
@@ -35,7 +39,7 @@
 
 #### V0.1.3 (2020/4/1 0:36) :yum:
 
-* Improvenments 
+* Bug 
     * 改进service层，空返回值优化，使用Optional.ofNullable,返回List.of()空集合
 
 #### V0.1.2 (2020/3/29 16:06) :dizzy_face:
