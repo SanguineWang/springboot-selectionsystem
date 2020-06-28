@@ -84,7 +84,7 @@
 
 * Init
     * 设计实体类关系，建立 : 学生，课程，选课表，教师
-    * 创建Vue项目(https://github.com/SanguineWang/Vue)
+    * 创建Vue项目(https://github.com/SanguineWang/Vue-TutorSelectionSysterm)
 * Bug 
     * 实体创建 String key属性时报错，可能与底层实现sql语句冲突
 ```text
