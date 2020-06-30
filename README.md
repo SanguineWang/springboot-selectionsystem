@@ -19,12 +19,16 @@
 ### Deployment environment :european_castle:
 
 * Server
+    * 114.115.181.66
 * System
     * Linux  
 * Software
     * Docker :penguin:
 
 ### :bookmark_tabs: Change Log 
+#### v1.0.0（2020/6/30）
+* New 
+    * docker-compose部署前后端项目
 #### v1.0.0（2020/6/28）
 * New 
     * studentControler
